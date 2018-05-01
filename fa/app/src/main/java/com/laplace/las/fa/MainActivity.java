@@ -1,10 +1,12 @@
 package com.laplace.las.fa;
 
+import android.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.Spinner;
 
 import java.util.ArrayList;
@@ -16,35 +18,28 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        List<String> list = new ArrayList<>();
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        list.add("1");
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this,R.layout.listview_item,list);
-        Spinner spinner = findViewById(R.id.sp);
-        spinner.setAdapter(arrayAdapter);
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                list.clear();
-                list.add("qwe2");
-                list.add("qwe3");
-                list.add("qwe5");
+        Button a, b, c, d, e, f;
+        AlertDialog alertDialog;
+        a=findViewById(R.id.b1);
+        b=findViewById(R.id.b2);
+        c=findViewById(R.id.b3);
+        d=findViewById(R.id.b4);
+        e=findViewById(R.id.b5);
+        f=findViewById(R.id.b6);
 
-            }
+        View.OnClickListener x;
+         x = (v)->{
+             Button va = (Button)v;
+             switch (v.getId()){
+                 case R.id.b1 :
+             }
+         };
 
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
-
+        a.setOnClickListener(x);
+        b.setOnClickListener(x);
+        c.setOnClickListener(x);
+        d.setOnClickListener(x);
+        e.setOnClickListener(x);
+        f.setOnClickListener(x);
     }
 }
