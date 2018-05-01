@@ -6,36 +6,26 @@
     android:layout_height="match_parent"
     tools:context="com.laplace.las.vandel.MainActivity">
 
-    <LinearLayout
+
+    <ScrollView
+        android:id="@+id/v"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        >
-            <HorizontalScrollView
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-                <ScrollView
-                    android:id="@+id/scroll"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent">
-                <ImageView
-                    android:id="@+id/controller"
-                    android:layout_width="500dp"
-                    android:layout_height="500dp"
-                    android:focusedByDefault="true"
-                    android:src="@drawable/box" />
-        </ScrollView>
-            </HorizontalScrollView>
+        <HorizontalScrollView
+            android:id="@+id/h"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            tools:layout_editor_absoluteX="221dp"
+            tools:layout_editor_absoluteY="0dp">
 
-    </LinearLayout>
+            <ImageView
+                android:id="@+id/box"
+                android:focusedByDefault="true"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/bbb" />
+        </HorizontalScrollView>
 
-
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>
