@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="s">
+        <item>las</item>
+        <item>dev</item>
+        <item>luv</item>
+        <item>ika</item>
+    </string-array>
+</resources>
