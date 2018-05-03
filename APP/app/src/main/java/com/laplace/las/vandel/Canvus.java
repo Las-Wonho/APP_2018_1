@@ -13,9 +13,5 @@ public class Canvus extends AppCompatActivity {
         setContentView(R.layout.canvus_layout);
         layout = findViewById(R.id.canvus_pa);
 
-        layout.setOnTouchListener((v,event)->{
-
-            return true;
-        });
     }
 }
