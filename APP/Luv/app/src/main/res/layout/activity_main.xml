@@ -4,39 +4,21 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.laplace.las.luv.MainActivity"
-    tools:layout_editor_absoluteY="81dp">
+    tools:context="com.laplace.las.luv.MainActivity">
 
-    <TextView
-        android:id="@+id/t"
-        android:layout_width="300dp"
-        android:layout_height="90dp"
-        android:layout_marginBottom="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.017" />
-
-    <HorizontalScrollView
-        android:id="@+id/hs_v"
+    <ScrollView
+        android:id="@+id/y"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
-        <ScrollView
-            android:id="@+id/sc_v"
+        <HorizontalScrollView
+            android:id="@+id/x"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
             <ImageView
-                android:id="@+id/box"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:src="@drawable/box" />
-        </ScrollView>
-    </HorizontalScrollView>
+                android:src="@drawable/box"
+                />
+        </HorizontalScrollView>
+    </ScrollView>
 </android.support.constraint.ConstraintLayout>

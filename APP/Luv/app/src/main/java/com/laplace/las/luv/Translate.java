@@ -1,62 +1,65 @@
 package com.laplace.las.luv;
 
-/**
- * Created by Las on 2018-05-03.
- */
+import android.content.ContentValues;
+import android.os.AsyncTask;
+import android.os.Handler;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.util.JsonReader;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
-import java.io.BufferedReader;
-import java.io.DataOutputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.net.URLEncoder;
+import org.json.JSONException;
+import org.json.JSONObject;
 
-public class Translate extends Thread{
+import java.sql.Connection;
 
-    String a;
-    TextView t;
-    Translate(String s, TextView t_){
-        a=s;
-        t= t_;
-    };
+public class Translate extends AppCompatActivity {
+    Button button;
+    EditText get_t;
+    TextView view;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_translate);
 
-    public void run() {
-        String clientId = "p0uJcP0XWh3ZRRrDH1sv";//애플리케이션 클라이언트 아이디값";
-        String clientSecret = "skIPyQnDR1";//애플리케이션 클라이언트 시크릿값";
-        try {
-            String text = URLEncoder.encode(a, "UTF-8");
-            String apiURL = "https://openapi.naver.com/v1/language/translate";
-            URL url = new URL(apiURL);
-            HttpURLConnection con = (HttpURLConnection)url.openConnection();
-            con.setRequestMethod("POST");
-            con.setRequestProperty("X-Naver-Client-Id", clientId);
-            con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
-            // post request
-            String postParams = "source=ko&target=en&text=" + text;
-            con.setDoOutput(true);
-            DataOutputStream wr = new DataOutputStream(con.getOutputStream());
-            wr.writeBytes(postParams);
-            wr.flush();
-            wr.close();
-            int responseCode = con.getResponseCode();
-            BufferedReader br;
-            if(responseCode==200) { // 정상 호출
-                br = new BufferedReader(new InputStreamReader(con.getInputStream()));
-            } else {  // 에러 발생
-                br = new BufferedReader(new InputStreamReader(con.getErrorStream()));
-            }
-            String inputLine;
-            StringBuffer response = new StringBuffer();
-            while ((inputLine = br.readLine()) != null) {
-                response.append(inputLine);
-            }
-            br.close();
-            t.setText(response.toString());
-        } catch (Exception e) {
-            System.out.println();
-            System.exit(0);
-            t.setText(e.toString());
+        button = findViewById(R.id.button);
+        get_t = findViewById(R.id.gettext);
+        view = findViewById(R.id.text_view);
+
+        button.setOnClickListener(v->{
+            String objective = get_t.getText().toString();
+            NetworkTask networkTask = new NetworkTask(get_t.getText().toString());
+            networkTask.execute();
+        });
+
+    }
+    public class NetworkTask extends AsyncTask<Void, Void, String> {
+
+        private String url;
+
+        public NetworkTask(String url) {
+
+            this.url = url;
+        }
+
+        @Override
+        protected String doInBackground(Void... params) {
+
+            String result; // 요청 결과를 저장할 변수.
+            HTTPS_POST requestHttpURLConnection = new HTTPS_POST();
+            result = requestHttpURLConnection.play(url); // 해당 URL로 부터 결과물을 얻어온다.
+
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            //doInBackground()로 부터 리턴된 값이 onPostExecute()의 매개변수로 넘어오므로 s를 출력한다.
+            view.setText(s.split("\"translatedText\":\"")[1]);
         }
     }
 }
