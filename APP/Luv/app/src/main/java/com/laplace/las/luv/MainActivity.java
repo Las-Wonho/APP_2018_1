@@ -25,8 +25,9 @@ public class MainActivity extends AppCompatActivity {
         X.setOnTouchListener((view, event)->{
 
             if(X.getScrollX()<200&&a==0){
-                Toast.makeText(getApplicationContext(),"<200",Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(MainActivity.this,Ramdom.class);
                 a=2;
+                startActivity(intent);
             }else if(X.getScrollX()>400&&a==0){
                 Intent intent = new Intent(MainActivity.this,Translate.class);
                 a=3;

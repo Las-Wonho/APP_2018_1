@@ -22,7 +22,7 @@ public class HTTPS_POST {
             con.setRequestProperty("X-Naver-Client-Id", clientId);
             con.setRequestProperty("X-Naver-Client-Secret", clientSecret);
             // post request
-            String postParams = "source=ko&target=en&text=" + str;
+            String postParams = "source=en&target=ko&text=" + str;
             con.setDoOutput(true);
             DataOutputStream wr = new DataOutputStream(con.getOutputStream());
             wr.writeBytes(postParams);
@@ -42,7 +42,7 @@ public class HTTPS_POST {
             }
             br.close();
             System.out.println(response.toString());
-            String utf8 = new String(response.toString().getBytes("utf-8"),"euc-kr");
+            String utf8 = new String(response.toString().getBytes(),"utf-8");
             return utf8;
         } catch (Exception e) {
             System.out.println(e);
